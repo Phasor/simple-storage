@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dapp</title>
+
+    <!-- add web3 CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Test Dapp</h1>
+    <div id="metaNotInstalled"></div>
+    <div id="address"></div>
+    <div>
+        <button id="connect-button">Connect</button>
+        <span id="connected-address"></span>
+    </div>
+    <div>
+        <br>
+        <input type="number" id="number">
+        <button type="submit" id='submit-button'>Store Number</button>
+    </div>
+    <br>
+    <div>
+        <p id="current-number">The current stored value is: </p>
+        <button id="get-number-button">Get Number</button>
+    </div>
+</body>
+
+<script src="./dapp.js"></script>
+
+</html>
