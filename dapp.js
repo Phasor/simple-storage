@@ -58,18 +58,38 @@ connectButton.onclick = async () => {
 let submitButton = document.getElementById("submit-button");
 submitButton.onclick = async () => {
 
+    var txHash = "";
+
+    //reset success message to blank
+    let success = document.getElementById("success-message");
+    success.innerHTML = "";
+
+    //inputted value
     const newNumber = document.getElementById('number').value;
 
-    //call the contract Store method from connected account
-    await simpleStorage.methods.store(newNumber).send({ from: ethereum.selectedAddress })
-        .then((value) => {
-            console.log(value);
-            alert("Updated value");
-        },
-            (error) => {
-                console.log(error);
-            }
-        )
+    //check if they are connected to MM
+    if (ethereum.selectedAddress === null) {
+        const notConnected = document.getElementById('not-connected');
+        notConnected.innerHTML = "Please connect your Meta Mask Wallet.";
+    }
+    else { //they are connected
+        //call the contract Store method from connected account
+        await simpleStorage.methods.store(newNumber).send({ from: ethereum.selectedAddress })
+            .once('transactionHash', (hash) => {
+                console.log(typeof hash);
+                txHash = hash;
+            },
+                (error) => {
+                    console.log(error);
+                }
+            )
+            .on('confirmation', function () {
+                let success = document.getElementById("success-message");
+                success.innerHTML = "Success!";
+                let txHashElem = document.getElementById("transaction-hash");
+                txHashElem.innerHTML = "Last Transaction Hash: " + txHash;
+            })
+    }
 }
 
 //display current number

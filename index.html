@@ -12,25 +12,32 @@
 
 </head>
 
-<body>
-    <h1>Test Dapp</h1>
-    <div id="metaNotInstalled"></div>
-    <div id="address"></div>
-    <div>
-        <button id="connect-button">Connect</button>
-        <span id="connected-address"></span>
-    </div>
-    <div>
+<div id="container" style="text-align:center; width:75%">
+
+    <body>
+        <h1>Rinkeby Simple Storage Dapp</h1>
+
+        <div id="metaNotInstalled"></div>
+        <div id="address"></div>
+        <div>
+            <button id="connect-button">Connect</button>
+            <span id="connected-address"></span>
+        </div>
+        <div>
+            <br>
+            <input type="number" id="number">
+            <button type="submit" id='submit-button'>Store Number</button>
+            <p id="not-connected"></p>
+        </div>
         <br>
-        <input type="number" id="number">
-        <button type="submit" id='submit-button'>Store Number</button>
-    </div>
-    <br>
-    <div>
-        <p id="current-number">The current stored value is: </p>
-        <button id="get-number-button">Get Number</button>
-    </div>
-</body>
+        <div>
+            <p id="current-number"></p>
+            <button id="get-number-button">Get Number</button>
+            <p id="success-message"></p>
+            <p id="transaction-hash"></p>
+        </div>
+    </body>
+</div>
 
 <script src="./dapp.js"></script>
 
